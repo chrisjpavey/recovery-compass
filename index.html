@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recovery Compass</title>
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#1e293b">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Recovery Compass">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Recovery Compass">
+    
+    <!-- App Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- App Icons for different sizes -->
+    <link rel="apple-touch-icon" sizes="180x180" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE4MCAxODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnR3JhZGllbnQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMWUyOTNiO3N0b3Atb3BhY2l0eToxIiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjUwJSIgc3R5bGU9InN0b3AtY29sb3I6IzM3MzBhMztzdG9wLW9wYWNpdHk6MSIgLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMWUyOTNiO3N0b3Atb3BhY2l0eToxIiAvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iY29tcGFzc0dyYWRpZW50IiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3R5bGU9InN0b3AtY29sb3I6IzM0ZDM5OTtzdG9wLW9wYWNpdHk6MSIgLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdHlsZT0ic3RvcC1jb2xvcjojNjBhNWZhO3N0b3Atb3BhY2l0eToxIiAvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgCiAgPCEtLSBCYWNrZ3JvdW5kIC0tPgogIDxyZWN0IHdpZHRoPSIxODAiIGhlaWdodD0iMTgwIiByeD0iNDAiIGZpbGw9InVybCgjYmdHcmFkaWVudCkiLz4KICA8IS0tIENvbXBhc3MgQ2lyY2xlIC0tPgogIDxjaXJjbGUgY3g9IjkwIiBjeT0iOTAiIHI9IjUwIiBmaWxsPSJ1cmwoI2NvbXBhc3NHcmFkaWVudCkiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIzIi8+CiAgCiAgPCEtLSBDb21wYXNzIE5lZWRsZSAoUG9pbnRpbmcgdG8gUmVjb3ZlcnkpIC0tPgogIDxwb2x5Z29uIHBvaW50cz0iOTAsNTAgOTUsMTAwIDkwLDEwNSA4NSwxMDAiIGZpbGw9IiNmZmZmZmYiLz4KICA8Y2lyY2xlIGN4PSI5MCIgY3k9IjkwIiByPSI4IiBmaWxsPSIjZmJiZjI0IiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIvPgogIAogIDwhLS0gQ29tcGFzcyBEaXJlY3Rpb24gTWFya3MgLS0+CiAgPGNpcmNsZSBjeD0iOTAiIGN5PSI0NSIgcj0iMyIgZmlsbD0iI2ZmZmZmZiIvPgogIDxjaXJjbGUgY3g9IjkwIiBjeT0iMTM1IiByPSIzIiBmaWxsPSIjZmZmZmZmIi8+CiAgPGNpcmNsZSBjeD0iNDUiIGN5PSI5MCIgcj0iMyIgZmlsbD0iI2ZmZmZmZiIvPgogIDxjaXJjbGUgY3g9IjEzNSIgY3k9IjkwIiByPSIzIiBmaWxsPSIjZmZmZmZmIi8+CiAgCiAgPCEtLSBSZWNvdmVyeSBUZXh0IC0tPgogIDx0ZXh0IHg9IjkwIiB5PSIxNjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iI2ZmZmZmZiI+UkVDT1ZFUlk8L3RleHQ+Cjwvc3ZnPg==">
+    <link rel="icon" type="image/png" sizes="192x192" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgdmlld0JveD0iMCAwIDE5MiAxOTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnR3JhZGllbnQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMWUyOTNiO3N0b3Atb3BhY2l0eToxIiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjUwJSIgc3R5bGU9InN0b3AtY29sb3I6IzM3MzBhMztzdG9wLW9wYWNpdHk6MSIgLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMWUyOTNiO3N0b3Atb3BhY2l0eToxIiAvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iY29tcGFzc0dyYWRpZW50IiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3R5bGU9InN0b3AtY29sb3I6IzM0ZDM5OTtzdG9wLW9wYWNpdHk6MSIgLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdHlsZT0ic3RvcC1jb2xvcjojNjBhNWZhO3N0b3Atb3BhY2l0eToxIiAvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgCiAgPCEtLSBCYWNrZ3JvdW5kIC0tPgogIDxyZWN0IHdpZHRoPSIxOTIiIGhlaWdodD0iMTkyIiByeD0iNDAiIGZpbGw9InVybCgjYmdHcmFkaWVudCkiLz4KICA8IS0tIENvbXBhc3MgQ2lyY2xlIC0tPgogIDxjaXJjbGUgY3g9Ijk2IiBjeT0iOTYiIHI9IjUwIiBmaWxsPSJ1cmwoI2NvbXBhc3NHcmFkaWVudCkiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIzIi8+CiAgCiAgPCEtLSBDb21wYXNzIE5lZWRsZSAoUG9pbnRpbmcgdG8gUmVjb3ZlcnkpIC0tPgogIDxwb2x5Z29uIHBvaW50cz0iOTYsNTYgMTAxLDEwNiA5NiwxMTEgOTEsMTA2IiBmaWxsPSIjZmZmZmZmIi8+CiAgPGNpcmNsZSBjeD0iOTYiIGN5PSI5NiIgcj0iOCIgZmlsbD0iI2ZiYmYyNCIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjIiLz4KICAKICA8IS0tIENvbXBhc3MgRGlyZWN0aW9uIE1hcmtzIC0tPgogIDxjaXJjbGUgY3g9Ijk2IiBjeT0iNTEiIHI9IjMiIGZpbGw9IiNmZmZmZmYiLz4KICA8Y2lyY2xlIGN4PSI5NiIgY3k9IjE0MSIgcj0iMyIgZmlsbD0iI2ZmZmZmZiIvPgogIDxjaXJjbGUgY3g9IjUxIiBjeT0iOTYiIHI9IjMiIGZpbGw9IiNmZmZmZmYiLz4KICA8Y2lyY2xlIGN4PSIxNDEiIGN5PSI5NiIgcj0iMyIgZmlsbD0iI2ZmZmZmZiIvPgogIAogIDwhLS0gUmVjb3ZlcnkgVGV4dCAtLT4KICA8dGV4dCB4PSI5NiIgeT0iMTcwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiNmZmZmZmYiPlJFQ09WRVJZPC90ZXh0Pgo8L3N2Zz4=">
+    
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1e293b 0%, #3730a3 50%, #1e293b 100%);
+            color: white;
+            min-height: 100vh;
+            padding: 20px;
+            /* Prevent zoom on iOS */
+            -webkit-text-size-adjust: 100%;
+            /* Prevent selection highlighting */
+            -webkit-user-select: none;
+            user-select: none;
+        }
+        
+        .container { max-width: 1200px; margin: 0 auto; }
+        .header { text-align: center; margin-bottom: 30px; }
+        .header h1 { font-size: 2rem; margin-bottom: 10px; }
+        .header p { color: #cbd5e1; }
+        
+        .card { 
+            background: rgba(30, 41, 59, 0.8); 
+            border-radius: 15px; 
+            padding: 25px; 
+            margin-bottom: 25px; 
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .countdown-card {
+            background: linear-gradient(135deg, #ea580c, #dc2626);
+            text-align: center;
+        }
+        
+        .countdown-number {
+            font-size: 3rem;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        .progress-bar {
+            background: rgba(255,255,255,0.2);
+            border-radius: 25px;
+            height: 16px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            background: white;
+            height: 100%;
+            border-radius: 25px;
+            transition: width 0.5s ease;
+        }
+        
+        .debt-free-card {
+            background: linear-gradient(135deg, #059669, #2563eb);
+            text-align: center;
+        }
+        
+        .grid { display: grid; gap: 25px; }
+        .grid-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+        
+        .stat-row { 
+            display: flex; 
+            justify-content: space-between; 
+            margin-bottom: 15px; 
+        }
+        
+        .money-positive { color: #34d399; }
+        .money-negative { color: #f87171; }
+        
+        .btn {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 15px 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+            margin-bottom: 10px;
+            /* iOS button styling */
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        
+        .btn:hover, .btn:active { background: #2563eb; }
+        .btn-success { background: #059669; }
+        .btn-success:hover, .btn-success:active { background: #047857; }
+        .btn-danger { background: #dc2626; }
+        .btn-danger:hover, .btn-danger:active { background: #b91c1c; }
+        
+        .form-group { margin-bottom: 20px; }
+        .form-label { display: block; margin-bottom: 8px; font-weight: 600; }
+        .form-input { 
+            width: 100%; 
+            padding: 12px; 
+            border-radius: 8px; 
+            border: 1px solid #374151; 
+            background: #374151; 
+            color: white; 
+            font-size: 16px; /* Prevent zoom on iOS */
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        
+        .toggle-buttons { display: flex; gap: 15px; margin-bottom: 20px; }
+        .toggle-btn { 
+            flex: 1; 
+            padding: 15px; 
+            border-radius: 10px; 
+            background: #4b5563; 
+            border: none; 
+            color: white; 
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        
+        .toggle-btn.active-success { background: #059669; }
+        .toggle-btn.active-danger { background: #dc2626; }
+        
+        .hidden { display: none; }
+        
+        /* Achievement notification */
+        .achievement-alert {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            color: #1f2937;
+            padding: 15px 25px;
+            border-radius: 15px;
+            font-weight: bold;
+            z-index: 1000;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            animation: slideDown 0.5s ease;
+        }
+        
+        @keyframes slideDown {
+            from { transform: translateX(-50%) translateY(-100%); }
+            to { transform: translateX(-50%) translateY(0); }
+        }
+        
+        /* PWA specific styling */
+        @media (display-mode: standalone) {
+            .header h1::before {
+                content: "📱 ";
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .grid-2 { grid-template-columns: 1fr; }
+            .toggle-buttons { flex-direction: column; }
+            .countdown-number { font-size: 2.5rem; }
+            body { padding: 15px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Achievement Alert -->
+    <div id="achievementAlert" class="achievement-alert hidden">
+        <div id="achievementText"></div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1>🧭 Recovery Compass</h1>
+            <p>ADHD-optimized recovery tracking that builds forward momentum</p>
+        </div>
+        
+        <!-- Debt Freedom Countdown -->
+        <div id="debtCountdown" class="card countdown-card">
+            <h3>🎯 Debt Freedom Countdown</h3>
+            <div class="countdown-number" id="countdownNumber">350 Days</div>
+            <p>Until you're completely debt-free</p>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" style="width: 5%"></div>
+            </div>
+            <p id="progressText">£0 paid down of £7,000 total debt</p>
+        </div>
+        
+        <!-- Evening Crisis Mode Alert -->
+        <div id="crisisMode" class="card hidden" style="background: linear-gradient(135deg, #dc2626, #b91c1c); border: 2px solid #fbbf24;">
+            <h3>🚨 Evening Crisis Mode Active</h3>
+            <p style="margin: 10px 0;">High-risk period detected. Your Recovery Compass is here to help you stay strong.</p>
+            <div style="margin: 15px 0;">
+                <button onclick="showDopamineMenu()" class="btn" style="background: #059669; margin-right: 10px;">
+                    ⚡ Get Instant Alternative
+                </button>
+                <button onclick="activateSOS()" class="btn" style="background: #dc2626;">
+                    🆘 I Need Support Now
+                </button>
+            </div>
+        </div>
+
+        <!-- Dopamine Menu -->
+        <div id="dopamineMenuCard" class="card hidden">
+            <h3>⚡ ADHD Dopamine Menu</h3>
+            <p>Choose your energy level and get an instant stimulating alternative:</p>
+            <div class="toggle-buttons">
+                <button onclick="getDopamineActivity('quick')" class="btn btn-success">
+                    🏃 Quick Hit (5 mins)
+                </button>
+                <button onclick="getDopamineActivity('medium')" class="btn btn-success">
+                    🎯 Medium Flow (20-30 mins)
+                </button>
+                <button onclick="getDopamineActivity('deep')" class="btn btn-success">
+                    🚀 Deep Dive (1+ hours)
+                </button>
+            </div>
+            <div id="activitySuggestion" style="margin-top: 15px; padding: 15px; background: rgba(59, 130, 246, 0.2); border-radius: 10px; display: none;">
+                <h4>Your ADHD-Friendly Activity:</h4>
+                <p id="activityText"></p>
+                <button onclick="activityComplete()" class="btn btn-success" style="margin-top: 10px;">
+                    ✅ I Did This! (+50 XP)
+                </button>
+            </div>
+        </div>
+        
+        <div id="debtFree" class="card debt-free-card hidden">
+            <h3>🎉 DEBT-FREE!</h3>
+            <p>You've paid off your entire £7,000 gambling debt!</p>
+            <p>Now every £20 goes toward your guitar/Switch/holidays with Alex!</p>
+        </div>
+        
+        <!-- Daily Check-in Button -->
+        <div style="text-align: center; margin-bottom: 25px;">
+            <button onclick="showCheckIn()" class="btn" style="font-size: 1.2rem; padding: 20px 40px;">
+                📝 Daily Check-In
+            </button>
+        </div>
+        
+        <!-- Stats -->
+        <div class="card">
+            <h3>📈 Building Forward</h3>
+            <div class="stat-row">
+                <span>Recovery Score</span>
+                <span class="money-positive" id="recoveryScore">0/100</span>
+            </div>
+            <div class="stat-row">
+                <span>Successful Days Total</span>
+                <span class="money-positive" id="successfulDays">0</span>
+            </div>
+            <div class="stat-row">
+                <span>Money Saved</span>
+                <span class="money-positive" id="moneySaved">£0</span>
+            </div>
+            <div class="stat-row">
+                <span>Gambling Debt Remaining</span>
+                <div style="text-align: right;">
+                    <div class="money-negative" id="debtRemaining">£7,000</div>
+                    <div style="font-size: 0.8rem; color: #fb923c; font-weight: 600;" id="daysToFree">350 days to debt-free</div>
+                </div>
+            </div>
+            <div class="stat-row">
+                <span>Current Streak</span>
+                <span class="money-positive" id="currentStreak">0 days</span>
+            </div>
+            <div class="stat-row">
+                <span>Best Streak</span>
+                <span class="money-positive" id="bestStreak">0 days</span>
+            </div>
+            <div class="stat-row">
+                <span>Alternative Activities Done</span>
+                <span class="money-positive" id="totalActivities">0</span>
+            </div>
+            <div class="stat-row">
+                <span>Days You'll Be Proud Of</span>
+                <span class="money-positive" id="proudDays">0</span>
+            </div>
+            <div class="stat-row">
+                <span>XP Points</span>
+                <span class="money-positive" id="xpDisplay">0 XP</span>
+            </div>
+        </div>
+        
+        <!-- Check-in Form -->
+        <div id="checkinForm" class="card hidden">
+            <h3>📊 Daily Progress Log</h3>
+            
+            <div id="alreadyLogged" class="hidden" style="background: rgba(5, 150, 105, 0.2); border: 1px solid #059669; border-radius: 10px; padding: 25px; text-align: center;">
+                <h4 style="color: #34d399; margin-bottom: 10px;">Today's Check-in Complete! ✅</h4>
+                <p>Come back tomorrow to continue building your progress.</p>
+            </div>
+            
+            <div id="formContent">
+                <div class="form-group">
+                    <label class="form-label">How did today go?</label>
+                    <div class="toggle-buttons">
+                        <button class="toggle-btn active-success" id="successBtn" onclick="setDayType(true)">
+                            ✅ Successful Day (No Gambling)
+                        </button>
+                        <button class="toggle-btn" id="gamblingBtn" onclick="setDayType(false)">
+                            ❌ Gambled Today
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Friction System for Gambling Days -->
+                <div id="gamblingFriction" class="form-group hidden">
+                    <div style="background: rgba(185, 28, 28, 0.2); border: 1px solid #dc2626; border-radius: 10px; padding: 20px; margin: 20px 0;">
+                        <h4 style="color: #f87171; margin-bottom: 15px;">⚠️ Gambling Impact Calculator</h4>
+                        <p style="margin-bottom: 10px;">Before you continue, consider the real impact:</p>
+                        <div id="impactCalculator">
+                            <p>• This will add <span id="debtIncrease">£300</span> to your debt</p>
+                            <p>• You'll need <span id="extraDays">15</span> more successful days to recover</p>
+                            <p>• Alex will be disappointed when you tell them</p>
+                            <p>• You'll feel shame and regret tomorrow morning</p>
+                        </div>
+                        <div style="margin-top: 15px;">
+                            <label style="color: #f87171;">Why are you choosing to gamble? (Required to continue)</label>
+                            <textarea id="gamblingReason" style="width: 100%; padding: 10px; margin-top: 5px; border-radius: 5px; background: #374151; color: white; border: 1px solid #dc2626; font-size: 16px;" placeholder="I must write a reason before I can log gambling..."></textarea>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="gamblingAmount" class="form-group hidden">
+                    <label class="form-label">Amount gambled today (£)</label>
+                    <input type="number" class="form-input" id="amountInput" placeholder="0" min="0" onchange="updateImpactCalculator()">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">What did you do instead today? (Builds XP!)</label>
+                    <input type="text" class="form-input" id="activityInput" placeholder="e.g., music production, gaming, coding, time with Alex">
+                </div>
+
+                <!-- Future Self Reminder -->
+                <div class="form-group">
+                    <label class="form-label">Quick check: How will Future You feel about today's choice?</label>
+                    <div style="display: flex; gap: 10px;">
+                        <button type="button" onclick="setFutureFeeling('proud')" class="toggle-btn" id="proudBtn">😊 Proud</button>
+                        <button type="button" onclick="setFutureFeeling('disappointed')" class="toggle-btn" id="disappointedBtn">😞 Disappointed</button>
+                    </div>
+                </div>
+                
+                <div class="toggle-buttons">
+                    <button class="btn btn-success" onclick="saveProgress()">Save Today's Progress</button>
+                    <button class="btn" onclick="cancelForm()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Register service worker for PWA functionality
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then((registration) => {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch((registrationError) => {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+
+        // Enhanced data structure
+        let data = {
+            totalSuccessfulDays: 0,
+            totalGamblingDays: 0,
+            moneySaved: 0,
+            gamblingDebt: 7000,
+            currentStreak: 0,
+            bestStreak: 0,
+            xpPoints: 0,
+            logs: [],
+            achievements: [],
+            riskLevel: 'low',
+            isEveningCrisisMode: false,
+            totalActivities: 0,
+            proudDays: 0,
+            disappointedDays: 0
+        };
+
+        let todayIsSuccessful = true;
+        let hasLoggedToday = false;
+        let currentRiskLevel = 'low';
+
+        // ADHD Dopamine Menu - categorized by energy/time
+        const dopamineMenu = {
+            quick: [
+                "Listen to 1 energetic song and dance",
+                "Do 20 jumping jacks or pushups", 
+                "Text Alex something funny",
+                "Take 5 photos of interesting things around you",
+                "Watch one YouTube video about something you're curious about"
+            ],
+            medium: [
+                "Start a creative project (music, art, writing)",
+                "Play a competitive online game for 30 minutes",
+                "Learn something new on YouTube/TikTok for 20 minutes",
+                "Organize one area of your space while listening to music",
+                "Video call Alex or a friend"
+            ],
+            deep: [
+                "Dive into a new skill tutorial (coding, music production, etc.)",
+                "Start planning a trip or activity with Alex",
+                "Research and shop for something you want (guitar, games, etc.)",
+                "Watch a documentary about something that interests you",
+                "Work on a longer-term creative project"
+            ]
+        };
+
+        // Achievement system with activity tracking
+        const achievements = [
+            { id: 'first_day', name: 'First Victory', desc: 'Complete your first successful day', xp: 50 },
+            { id: 'week_warrior', name: 'Week Warrior', desc: 'Reach 7 successful days', xp: 200 },
+            { id: 'crisis_survivor', name: 'Crisis Survivor', desc: 'Use crisis mode and stay strong', xp: 100 },
+            { id: 'activity_master', name: 'Activity Master', desc: 'Log 10 alternative activities', xp: 300 },
+            { id: 'proud_streak', name: 'Pride Builder', desc: 'Have 5 days you\'ll be proud of', xp: 200 },
+            { id: 'saver_100', name: 'Century Saver', desc: 'Save £100', xp: 150 },
+            { id: 'debt_crusher', name: 'Debt Crusher', desc: 'Pay down £1000 of debt', xp: 500 },
+            { id: 'alex_proud', name: 'Alex Would Be Proud', desc: 'Reach 30 successful days', xp: 1000 }
+        ];
+
+        // Risk assessment based on time
+        function assessRiskLevel() {
+            const hour = new Date().getHours();
+            if (hour >= 19 && hour <= 23) { // 7 PM - 11 PM
+                currentRiskLevel = 'high';
+                data.isEveningCrisisMode = true;
+            } else if (hour >= 17 && hour <= 19) { // 5 PM - 7 PM
+                currentRiskLevel = 'medium';
+                data.isEveningCrisisMode = false;
+            } else {
+                currentRiskLevel = 'low';
+                data.isEveningCrisisMode = false;
+            }
+            return currentRiskLevel;
+        }
+
+        // Enhanced functions
+        let selectedFutureFeeling = 'proud';
+
+        function updateDisplay() {
+            // Risk assessment and crisis mode
+            const riskLevel = assessRiskLevel();
+            
+            // Show/hide crisis mode
+            if (data.isEveningCrisisMode && !hasLoggedToday) {
+                document.getElementById('crisisMode').classList.remove('hidden');
+            } else {
+                document.getElementById('crisisMode').classList.add('hidden');
+            }
+
+            // Calculate values
+            const daysToFree = Math.ceil(data.gamblingDebt / 20);
+            const recoveryScore = data.totalSuccessfulDays + data.totalGamblingDays > 0 ? 
+                Math.round((data.totalSuccessfulDays / (data.totalSuccessfulDays + data.totalGamblingDays)) * 100) : 0;
+            const progressPercent = Math.max(5, ((7000 - data.gamblingDebt) / 7000) * 100);
+            
+            // Update countdown
+            document.getElementById('countdownNumber').textContent = daysToFree + ' Days';
+            document.getElementById('progressFill').style.width = progressPercent + '%';
+            document.getElementById('progressText').textContent = 
+                '£' + (7000 - data.gamblingDebt).toLocaleString() + ' paid down of £7,000 total debt';
+            
+            // Update stats
+            document.getElementById('recoveryScore').textContent = recoveryScore + '/100';
+            document.getElementById('successfulDays').textContent = data.totalSuccessfulDays;
+            document.getElementById('moneySaved').textContent = '£' + data.moneySaved.toLocaleString();
+            document.getElementById('debtRemaining').textContent = '£' + data.gamblingDebt.toLocaleString();
+            document.getElementById('daysToFree').textContent = daysToFree + ' days to debt-free';
+            document.getElementById('currentStreak').textContent = data.currentStreak + ' days';
+            document.getElementById('bestStreak').textContent = data.bestStreak + ' days';
+            document.getElementById('xpDisplay').textContent = data.xpPoints + ' XP';
+            document.getElementById('totalActivities').textContent = data.totalActivities;
+            document.getElementById('proudDays').textContent = data.proudDays;
+            
+            // Show/hide debt free celebration
+            if (data.gamblingDebt <= 0) {
+                document.getElementById('debtCountdown').classList.add('hidden');
+                document.getElementById('debtFree').classList.remove('hidden');
+            } else {
+                document.getElementById('debtCountdown').classList.remove('hidden');
+                document.getElementById('debtFree').classList.add('hidden');
+            }
+        }
+
+        function updateImpactCalculator() {
+            const amount = parseInt(document.getElementById('amountInput').value) || 300;
+            const extraDays = Math.ceil(amount / 20);
+            document.getElementById('debtIncrease').textContent = '£' + amount;
+            document.getElementById('extraDays').textContent = extraDays;
+        }
+
+        function setFutureFeeling(feeling) {
+            selectedFutureFeeling = feeling;
+            document.getElementById('proudBtn').className = feeling === 'proud' ? 'toggle-btn active-success' : 'toggle-btn';
+            document.getElementById('disappointedBtn').className = feeling === 'disappointed' ? 'toggle-btn active-danger' : 'toggle-btn';
+        }
+
+        function showDopamineMenu() {
+            document.getElementById('dopamineMenuCard').classList.remove('hidden');
+            document.getElementById('activitySuggestion').style.display = 'none';
+        }
+
+        function getDopamineActivity(category) {
+            const activities = dopamineMenu[category];
+            const randomActivity = activities[Math.floor(Math.random() * activities.length)];
+            document.getElementById('activityText').textContent = randomActivity;
+            document.getElementById('activitySuggestion').style.display = 'block';
+        }
+
+        function activityComplete() {
+            data.xpPoints += 50;
+            data.totalActivities++;
+            updateDisplay();
+            showAchievement('⚡ Energy Redirected!', 'You chose a healthy alternative! +50 XP');
+            document.getElementById('dopamineMenuCard').classList.add('hidden');
+        }
+
+        function activateSOS() {
+            alert('🆘 SOS Activated!\n\nRemember:\n• This feeling will pass in 15-20 minutes\n• You\'ve been strong for ' + data.currentStreak + ' days\n• Alex believes in you\n• Tomorrow you\'ll be proud you stayed strong\n\nTry the dopamine menu or call someone you trust.');
+            showDopamineMenu();
+        }
+
+        function checkAchievements() {
+            achievements.forEach(achievement => {
+                if (data.achievements.includes(achievement.id)) return;
+                
+                let unlocked = false;
+                switch(achievement.id) {
+                    case 'first_day':
+                        unlocked = data.totalSuccessfulDays >= 1;
+                        break;
+                    case 'week_warrior':
+                        unlocked = data.currentStreak >= 7;
+                        break;
+                    case 'activity_master':
+                        unlocked = data.totalActivities >= 10;
+                        break;
+                    case 'proud_streak':
+                        unlocked = data.proudDays >= 5;
+                        break;
+                    case 'saver_100':
+                        unlocked = data.moneySaved >= 100;
+                        break;
+                    case 'debt_crusher':
+                        unlocked = (7000 - data.gamblingDebt) >= 1000;
+                        break;
+                    case 'alex_proud':
+                        unlocked = data.currentStreak >= 30;
+                        break;
+                }
+                
+                if (unlocked) {
+                    data.achievements.push(achievement.id);
+                    data.xpPoints += achievement.xp;
+                    showAchievement(achievement.name, achievement.desc + ' (+' + achievement.xp + ' XP)');
+                }
+            });
+        }
+
+        function showAchievement(title, description) {
+            document.getElementById('achievementText').innerHTML = '<strong>' + title + '</strong><br>' + description;
+            document.getElementById('achievementAlert').classList.remove('hidden');
+            setTimeout(() => {
+                document.getElementById('achievementAlert').classList.add('hidden');
+            }, 5000);
+        }
+
+        // Set day type with enhanced friction
+        function setDayType(isSuccessful) {
+            todayIsSuccessful = isSuccessful;
+            
+            const successBtn = document.getElementById('successBtn');
+            const gamblingBtn = document.getElementById('gamblingBtn');
+            const gamblingAmount = document.getElementById('gamblingAmount');
+            const gamblingFriction = document.getElementById('gamblingFriction');
+            
+            if (isSuccessful) {
+                successBtn.className = 'toggle-btn active-success';
+                gamblingBtn.className = 'toggle-btn';
+                gamblingAmount.classList.add('hidden');
+                gamblingFriction.classList.add('hidden');
+                setFutureFeeling('proud');
+            } else {
+                successBtn.className = 'toggle-btn';
+                gamblingBtn.className = 'toggle-btn active-danger';
+                gamblingAmount.classList.remove('hidden');
+                gamblingFriction.classList.remove('hidden');
+                setFutureFeeling('disappointed');
+                updateImpactCalculator();
+            }
+        }
+
+        // Enhanced save progress
+        function saveProgress() {
+            // Validation for gambling days
+            if (!todayIsSuccessful) {
+                const reason = document.getElementById('gamblingReason').value.trim();
+                if (reason.length < 10) {
+                    alert('❌ You must write a reason for gambling (at least 10 characters) before you can continue.');
+                    return;
+                }
+            }
+
+            const amountInput = document.getElementById('amountInput');
+            const activityInput = document.getElementById('activityInput');
+            
+            // Create log entry
+            const logEntry = {
+                date: new Date().toISOString().split('T')[0],
+                isSuccessful: todayIsSuccessful,
+                amount: todayIsSuccessful ? 0 : (parseInt(amountInput.value) || 0),
+                activity: activityInput.value || '',
+                futureFeeling: selectedFutureFeeling,
+                gamblingReason: todayIsSuccessful ? '' : (document.getElementById('gamblingReason').value || '')
+            };
+            
+            // Add to logs
+            data.logs.push(logEntry);
+            
+            // Update stats and XP
+            if (todayIsSuccessful) {
+                data.totalSuccessfulDays++;
+                data.moneySaved += 20;
+                data.gamblingDebt = Math.max(0, data.gamblingDebt - 20);
+                data.currentStreak++;
+                data.xpPoints += 100; // Base XP for successful day
+                
+                // Track alternative activities
+                if (logEntry.activity && logEntry.activity.trim().length > 0) {
+                    data.totalActivities++;
+                    data.xpPoints += 50; // Bonus XP for alternative activity
+                }
+                
+                // Track future feeling
+                if (logEntry.futureFeeling === 'proud') {
+                    data.proudDays++;
+                    data.xpPoints += 25; // Bonus XP for pride
+                }
+                
+                if (data.currentStreak > data.bestStreak) {
+                    data.bestStreak = data.currentStreak;
+                }
+            } else {
+                data.totalGamblingDays++;
+                data.gamblingDebt += logEntry.amount;
+                data.currentStreak = 0;
+                
+                // Track disappointment (no XP loss, but tracked)
+                if (logEntry.futureFeeling === 'disappointed') {
+                    data.disappointedDays++;
+                }
+            }
+            
+            // Save to localStorage
+            localStorage.setItem('recovery-data', JSON.stringify(data));
+            
+            // Check for achievements
+            checkAchievements();
+            
+            // Update display
+            updateDisplay();
+            
+            // Mark as logged and hide form
+            hasLoggedToday = true;
+            document.getElementById('checkinForm').classList.add('hidden');
+            document.getElementById('alreadyLogged').classList.remove('hidden');
+            document.getElementById('formContent').classList.add('hidden');
+            
+            if (todayIsSuccessful) {
+                let xpMessage = 'Successful day logged! +100 XP';
+                if (logEntry.activity.trim()) {
+                    xpMessage += ' +50 XP for activity';
+                }
+                if (logEntry.futureFeeling === 'proud') {
+                    xpMessage += ' +25 XP for pride!';
+                }
+                showAchievement('Daily Victory!', xpMessage);
+            }
+        }
+
+        // Show check-in form
+        function showCheckIn() {
+            if (hasLoggedToday) {
+                alert('You have already logged today! Come back tomorrow.');
+                return;
+            }
+            document.getElementById('checkinForm').classList.remove('hidden');
+            document.getElementById('alreadyLogged').classList.add('hidden');
+            document.getElementById('formContent').classList.remove('hidden');
+            setDayType(true);
+        }
+
+        // Cancel form
+        function cancelForm() {
+            document.getElementById('checkinForm').classList.add('hidden');
+        }
+
+        // Load data
+        function loadData() {
+            const saved = localStorage.getItem('recovery-data');
+            if (saved) {
+                data = JSON.parse(saved);
+            }
+            
+            // Check if logged today
+            const today = new Date().toISOString().split('T')[0];
+            hasLoggedToday = data.logs.some(log => log.date === today);
+            
+            updateDisplay();
+        }
+
+        // Initialize with enhanced features
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load existing data
+            loadData();
+            
+            // Initialize risk assessment
+            assessRiskLevel();
+            updateDisplay();
+            
+            // Set up automatic risk level updates
+            setInterval(function() {
+                assessRiskLevel();
+                updateDisplay();
+            }, 60000); // Check every minute
+            
+            console.log('Enhanced Recovery Compass PWA initialized');
+        });
+    </script>
+</body>
+</html>
