@@ -2,7 +2,7 @@
   "name": "Recovery Compass",
   "short_name": "Recovery",
   "description": "ADHD-optimized recovery tracking that builds forward momentum",
-  "start_url": "/",
+  "start_url": "/recovery-compass",
   "display": "standalone",
   "background_color": "#1e293b",
   "theme_color": "#1e293b",
